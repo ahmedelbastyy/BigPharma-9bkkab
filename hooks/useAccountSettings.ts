@@ -1,0 +1,6 @@
+import { useCallback,useRef,useState } from 'react';
+import { changeAccountEmail,changeAccountPassword,sendAccountReauthentication } from '@/services/accountSettingsService';
+export function useAccountSettings(){const [email,setEmail]=useState(''),[currentPassword,setCurrentPassword]=useState(''),[password,setPassword]=useState(''),[confirm,setConfirm]=useState(''),[nonce,setNonce]=useState(''),[busy,setBusy]=useState(false),[error,setError]=useState(''),[message,setMessage]=useState(''),lock=useRef(false);
+ const run=useCallback(async(action:()=>Promise<string>,clear=true)=>{if(lock.current)return;lock.current=true;setBusy(true);setError('');setMessage('');try{setMessage(await action());if(clear){setCurrentPassword('');setPassword('');setConfirm('');setNonce('');}}catch(e){setError(e instanceof Error?e.message:'Account could not update.');}finally{lock.current=false;setBusy(false);}},[]);
+ return {email,setEmail,currentPassword,setCurrentPassword,password,setPassword,confirm,setConfirm,nonce,setNonce,busy,error,message,saveEmail:()=>run(()=>changeAccountEmail(email,currentPassword)),savePassword:()=>run(()=>changeAccountPassword(currentPassword,password,confirm,nonce)),sendCode:()=>run(sendAccountReauthentication,false)};
+}

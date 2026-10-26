@@ -1,0 +1,35 @@
+# Public signed callbacks and signed-in app requests share this endpoint.
+# Both paths verify authentication inside the function; no anonymous task submission.
+[functions.anakin-drugs]
+verify_jwt = false
+
+# This endpoint verifies the bearer JWT with auth.getUser before accessing openFDA/cache.
+[functions.condition-lookup]
+verify_jwt = false
+
+# RxCheck validates the bearer token with the existing Supabase client inside the function.
+[functions.rxcheck-interactions]
+verify_jwt = false
+
+# These functions authenticate bearer tokens internally; NADAC does not require CMS credentials.
+[functions.nadac-pricing]
+verify_jwt = false
+
+# Nearby lookups also validate auth.getUser internally, retaining account-scoped quotas.
+[functions.nearby-pharmacies]
+verify_jwt = false
+
+[functions.gemini-scanner]
+verify_jwt = false
+
+# Patient reads use SQL/RLS; workers and import/review actions verify authorization internally.
+[functions.medication-content]
+verify_jwt = false
+
+# One sharing endpoint validates patient/recipient JWTs with auth.getUser.
+# Connect forwards a verified server-signed authorization assertion for each recipient request.
+# Emails never assign roles; optional server credentials cannot replace signed assertions.
+# Prototype authenticated recipients are not professionally approved. A consented invitation
+# and its bound grant are required; scopes, expiry and revocation stay enforced on every read.
+[functions.patient-sharing]
+verify_jwt = false
