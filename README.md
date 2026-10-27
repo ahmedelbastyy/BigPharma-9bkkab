@@ -108,7 +108,7 @@ AI tools were used as development aids during work on this project. The student 
 
 Add the public link to the final demonstration video here before submitting:
 
-- **Demo video:** _Add public video URL_
+- **Demo video:** _https://youtu.be/mNihQRdVa9I?si=PqOv4PHf1L6XyuIM_
 
 ### Reviewer setup notes
 
