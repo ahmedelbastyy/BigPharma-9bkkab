@@ -98,11 +98,7 @@ BigPharma is intended to improve access to medication information and affordabil
 
 ## Congressional App Challenge
 
-BigPharma is being prepared for consideration in the Congressional App Challenge. This section is intended to help reviewers understand the project's purpose, technology, and setup.
-
-### AI-use disclosure
-
-AI tools were used as development aids during work on this project. The student developer remains responsible for the project, its implementation, testing, and explanation. For the competition submission, the developer should identify the specific AI tools used and accurately describe the tasks they assisted with; AI assistance must not be presented as the entirety of the technical work.
+BigPharma is prepared for consideration in the Congressional App Challenge. This section is intended to help reviewers understand the project's purpose, technology, and setup.
 
 ### Demo
 
